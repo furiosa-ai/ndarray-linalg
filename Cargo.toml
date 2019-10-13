@@ -17,17 +17,20 @@ default    = []
 intel-mkl  = ["lapack-src/intel-mkl", "blas-src/intel-mkl"]
 netlib     = ["lapack-src/netlib", "blas-src/netlib"]
 openblas   = ["lapack-src/openblas", "blas-src/openblas"]
-serde-1    = ["ndarray/serde-1", "num-complex/serde"]
+serde-1    = ["ndarray/serde-1"]
 
 static          = ["openblas-static"]
 openblas-static = ["openblas", "openblas-src"]
 
 [dependencies]
 lapacke = "0.2"
-num-traits  = "0.2"
-cauchy = "0.2.1"
-num-complex = "0.2.1"
+num-traits = "0.2"
+num-complex = "0.2"
 rand = "0.7"
+
+[dependencies.cauchy]
+git = "http://github.com/rust-math/cauchy"
+branch = "rand-0.7"
 
 [dependencies.ndarray]
 version = "0.13"
@@ -55,3 +58,8 @@ criterion = "*"
 [[bench]]
 name = "eigh"
 harness = false
+
+[patch.crates-io.num-complex]
+git = "http://github.com/termoshtt/num-complex"
+branch = "rand-0.7"
+features = ["serde", "rand"]
