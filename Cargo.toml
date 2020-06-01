@@ -31,7 +31,7 @@ rand = "0.5"
 
 [dependencies.ndarray]
 version = "0.13.0"
-features = ["blas", "approx"]
+features = ["approx"]
 default-features = false
 
 [dependencies.blas-src]
